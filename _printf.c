@@ -1,3 +1,7 @@
+#include "main.h"
+#include <limits.h>
+#include <stdio.h>
+
 /**
  * _printf - produces output according to a format
  * @format: format string containing the characters and the specifiers
@@ -39,6 +43,7 @@ int _printf(const char *format, ...)
 		} else
 			count += _putchar(*p);
 	}
+	_putchar(-1);	
 	va_end(arguments);
 	return (count);
 
