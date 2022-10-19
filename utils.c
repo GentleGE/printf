@@ -1,102 +1,86 @@
 #include "main.h"
-#include <unistd.h>
-#include <stdlib.h>
 
 /**
- * lenstr - get the length of a string
- * @str: target string
- * Return: the number of characters in str (excluding nullbyte)
- */
-int lenstr(const char *str)
-{
-	int length = 0;
-
-	while (str[length] != nullbyte)
-	{
-		length++;
-	}
-	return (length);
-}
-
-/**
- * _putchar - prints a single character
- * It does this by implementing a delayed printing method
- * where each character == added to a buffer until the buffer == full
- * || until it == explicitly called with nullbyte(\0)
+ * is_printable - Evaluates if a char is printable
+ * @c: Char to be evaluated.
  *
- * @c: character to print
+ * Return: 1 if c is printable, 0 otherwise
+ */
+int is_printable(char c)
+{
+	if (c >= 32 && c < 127)
+		return (1);
+
+	return (0);
+}
+
+/**
+ * append_hexa_code - Append ascci in hexadecimal code to buffer
+ * @buffer: Array of chars.
+ * @i: Index at which to start appending.
+ * @ascii_code: ASSCI CODE.
+ * Return: Always 3
+ */
+int append_hexa_code(char ascii_code, char buffer[], int i)
+{
+	char map_to[] = "0123456789ABCDEF";
+	/* The hexa format code is always 2 digits long */
+	if (ascii_code < 0)
+		ascii_code *= -1;
+
+	buffer[i++] = '\\';
+	buffer[i++] = 'x';
+
+	buffer[i++] = map_to[ascii_code / 16];
+	buffer[i] = map_to[ascii_code % 16];
+
+	return (3);
+}
+
+/**
+ * is_digit - Verifies if a char is a digit
+ * @c: Char to be evaluated
  *
- * Return: Always 1
+ * Return: 1 if c is a digit, 0 otherwise
  */
-int _putchar(char c)
+int is_digit(char c)
 {
-	static char *buffer = "";
-	static int buf_size = -1;
-	const int mx = 1024;
+	if (c >= '0' && c <= '9')
+		return (1);
 
-
-	if (buf_size == -1)
-	{
-		buffer = (char *)malloc(mx);
-		if (buffer == NULL)
-			return (0);
-		buf_size = 0;
-	}
-	if (c == '\0')
-	{
-		write(1, buffer, buf_size);
-		free(buffer);
-		buffer = "";
-		buf_size = -1;
-		return (0);
-	}
-	buffer[buf_size++] = c;
-	if (buf_size == mx)
-	{
-		write(1, buffer, mx);
-		free(buffer);
-		buffer = "";
-		buf_size = -1;
-	}
-	return (1);
+	return (0);
 }
 
 /**
- * print - prints a string using _putchar
- * @s: string to print
- * @n: number of bytes to print
- * Return: the length of the printed string
+ * convert_size_number - Casts a number to the specified size
+ * @num: Number to be casted.
+ * @size: Number indicating the type to be casted.
+ *
+ * Return: Casted value of num
  */
-int print(char *s, int n)
+long int convert_size_number(long int num, int size)
 {
-	int i = 0;
+	if (size == S_LONG)
+		return (num);
+	else if (size == S_SHORT)
+		return ((short)num);
 
-	while (i < n && s[i] != nullbyte)
-	{
-		_putchar(s[i]);
-		i++;
-	}
-	return (i);
+	return ((int)num);
 }
 
 /**
- * findchr - find a character in a string
- * @str: target string
- * @chr: character to find
- * Return: The position of the first occurence of chr in the string
- *		|| -1 if chr was not found in the string
+ * convert_size_unsgnd - Casts a number to the specified size
+ * @num: Number to be casted
+ * @size: Number indicating the type to be casted
+ *
+ * Return: Casted value of num
  */
-int findchr(char *str, char chr)
+long int convert_size_unsgnd(unsigned long int num, int size)
 {
-	int i, len;
+	if (size == S_LONG)
+		return (num);
+	else if (size == S_SHORT)
+		return ((unsigned short)num);
 
-	len = lenstr(str);
-	for (i = 0; i < len; i++)
-	{
-		if (str[i] == chr)
-			return (i);
-	}
-	if (chr == nullbyte && str[i] == nullbyte)
-		return (i);
-	return (-1);
+	return ((unsigned int)num);
 }
