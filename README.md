@@ -81,8 +81,11 @@ or
 # Things to be learnt from the project.
 
 -How to use GitHub for collaboration projects
+
 -How to apply variadic functions
+
 -The complexities of the printf function
+
 -Finding a good workflow
 
 # Getting Started
@@ -98,4 +101,5 @@ You will need to clone the repository of the project from Github. This will cont
 After cloning the repository you will have a folder called printf. In here there will be several files that allow the function to work.
 
 ```Submitted by```
-```Gideon Etokebe and Enobong Etteh```
+
+```Gideon ETOKEBE and Enobong ETTEH```
