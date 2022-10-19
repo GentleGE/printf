@@ -78,6 +78,13 @@ or
 |**r**|The  argument received is expected to be a pointer type char * to an array of characters.  Characters from this array are printed in reverse order up to (but not including) a null byte  ('\0').  |
 |**R**|The argument received is expected to be a pointer type char * to an array of characters.  Characters from this array  are  encoded  to  ROT13  and printed in order up to (but not including a null byte  ('\0').  |
 
+# Things to be learnt from the project.
+
+-How to use GitHub for collaboration projects
+-How to apply variadic functions
+-The complexities of the printf function
+-Finding a good workflow
+
 # Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine (Linux distro) for development and testing purposes.
@@ -86,9 +93,9 @@ These instructions will get you a copy of the project up and running on your loc
 
 You will need to clone the repository of the project from Github. This will contain the _printf function and all of its dependencies. No main.c file will be provided for testing, so you will need to create one.
 
-    git clone https://github.com/ehoneahobed/printf.git
+    git clone https://github.com/GentleGE/printf
 
 After cloning the repository you will have a folder called printf. In here there will be several files that allow the function to work.
 
 ```Submitted by```
-```Ehoneah OBED and Hakeem BADEJO```
+```Gideon Etokebe and Enobong Etteh```
