@@ -1,35 +1,69 @@
-#ifndef HOLB_H
-#define HOLB_H
+#ifndef PARSER_H
+#define PARSER_H
+#define true 1
+#define false 0
+#define nullbyte '\0'
+#define not(x) !(x)
+#define bool char
 
-#define BUFSIZE 1025
+#include <stddef.h>
 #include <stdarg.h>
 
-/**
-  * struct validTypes - structure to lookup functions for valid types
-  * @valid: flags are preceded by a '%' character.
-  * @f: pointer to function
-  */
-typedef struct validTypes
-{
-	char *valid;
-	char *(*f)();
-} v_types;
+typedef int (*printer)(char *, va_list);
+typedef int (*matcher)(char *);
 
-int _printf(const char *format, ...);
-char *(*get_valid_type(char s))(va_list);
-char *found_char(va_list c);
-char *found_string(va_list *s);
-char *found_percent();
-char *found_int(va_list n);
-char *found_unsigned(va_list usign);
-char *found_nothing(char);
-char *found_reverse(va_list s);
-char *found_rot13(va_list s);
-char *found_octal(va_list n);
-char *_memcpy(char *dest, char *src, unsigned int n, unsigned int bufferlen);
-int _strlen(char *s);
-void _puts(char *buffer, int size);
-int alloc_buffer(char *hold, int hlen, char *buffer, int blen, double *total);
-char *ctos(char c);
+/**
+ * struct parser - an object representing a parser
+ * functionality
+ *
+ * @match: a function used to check if the parser matches
+ * a format specifier
+ * @print: a function used to print out the value
+ * associated with a format specifier
+ */
+typedef struct parser
+{
+	matcher match;
+	printer print;
+} parser;
+
+
+int _printf(const char *, ...);
+
+/* utilities */
+int findchr(char *str, char chr);
+int lenstr(const char *str);
+int _putchar(char c);
+int print(char *, int);
+
+/* printers */
+int print_signed_int(int n, unsigned int, bool);
+int print_unsigned_int(unsigned int n, unsigned int, bool);
+int print_unsigned_long(unsigned long int, unsigned int, bool);
+int print_signed_long(signed long int, unsigned int, bool);
+
+int print_percent(char *, va_list);
+int print_string(char *, va_list);
+int print_char(char *, va_list);
+int print_int(char *, va_list);
+int print_uint(char *, va_list);
+int print_address(char *, va_list);
+int print_hexadecimal(char *, va_list);
+int print_octal(char *, va_list);
+int print_binary(char *, va_list);
+
+
+/* Matchers */
+int match_percent(char *);
+int match_char(char *);
+int match_string(char *);
+int match_int(char *);
+int match_uint(char *);
+int match_address(char *);
+int match_hexadecimal(char *);
+int match_octal(char *);
+int match_binary(char *);
+
+
 
 #endif

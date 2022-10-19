@@ -1,39 +1,44 @@
-# _printf
+# 0x11. C - printf
 
-A re-creation of the printf function in C!
+## Description
 
+This is a collaboration project between Toluwani Ajibare and David John who are both students in the ALX Africa software engineering program.
+This project involves a function named '\_printf'. The \_printf function will imitate the actual 'printf' command located in the <stdio.h> library.
 
-## Requirements for this project
+## Prototype
 
-- Code must comply with the [Betty](https://github.com/holbertonschool/Betty) style and document checks.
-- Compile code using flags: `-Wall`, `-Werror`, `-Wextra`, `-pedantic`, `-Wno-format`
-- Cannot use global variables.
-- Restricted to no more than 5 functions per file.
-- Function prototypes should be included in header file `holberton.h`
-- Header files should be include guarded.
-- Authorized functions and macros:
-..* `write` (`man 2 write`)
-..* `malloc` (`man 3 malloc`)
-..* `free` (`man 3 free`)
-..* `va_start` (`man 3 va_start`)
-..* `va_end` (`man 3 va_end`)
-..* `va_copy` (`man 3 va_copy`)
-..* `va_arg` (`man 3 va_arg`)
+> int \_printf(const char \*format, ...);
 
+### Requirements
 
-## File Descriptions
+- All files were compiled on Ubuntu 20.4 LTS using gcc, using the options -Wall -Werror -Wextra -pedantic -std=gnu89
+- All files ended with a new line
+- Code used the Betty style
+- Global variables were not used
+- The prototypes of all functions were included in the header file called 'main.h'
+- All header files were include guarded
 
-- `holberton.h`: Header file which contains `<stdarg.h>`, constant `BUFSIZE`, struct `validTypes` definition, and all function prototypes.
-- `_printf.c`: Main printf function
-- `helper.c`: Core helper functions for printf, including function `get_valid_type` which returns a function pointer, and `alloc_buffer` which fills buffer space and handles a full buffer fill.
-- `tools.c`: Helper functions for general use, including `_strlen` to find string length, `_memcpy` that copies characters into a destination, and `_puts` that calls the `write` function to print an entire buffer.
-- `printf_functions.c`: Functions stored within our struct `validTypes` array, which handles char, string, %, int, and unsigned int.
-- `adv_printf_functions.c`: Functions stored within our struct `validTypes` array, which handles reverse, and rot13.
-- `adv2_printf_functions.c`: Functions stored within our struct `validTypes` array, which handles octal, and hex.
+### Usage
 
+- Prints a string to the standard output according to a given format.
+- The \_printf() is a variadic function that accepts arguments and replaces the tags written in the strings.
+- If the program runs successfully, the return value is the amount of chars printed or -1 otherwise.
 
-## Team
+### Example
 
-*Ian Liu-Johnston* - [Github](https://github.com/ianliu-johnston) || [Twitter](https://twitter.com/Concativerse)
+Print the string of characters in "Hello World":
 
-*Philip Yoo* - [Github](https://github.com/philipyoo) || [Twitter](https://twitter.com/philipYoo10)
+- Input: \_printf("Hello World!");
+- Output: Hello World!
+
+### Things to be learnt from the project.
+
+- How to use GitHub for collaboration projects
+- How to apply variadic functions
+- The complexities of the printf function
+- Finding a good workflow
+
+### Contributors
+
+1. ToluwaniAJ [Gmail] (toluwaniajibare@gmail.com)
+2. Mcsavvy [Gmail] (davemcsavvii@gmail.com)
